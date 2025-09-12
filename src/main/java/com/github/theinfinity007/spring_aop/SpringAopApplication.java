@@ -1,5 +1,6 @@
 package com.github.theinfinity007.spring_aop;
 
+import com.github.theinfinity007.spring_aop.dao.AccountDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,10 +14,14 @@ public class SpringAopApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner() {
+	CommandLineRunner commandLineRunner(AccountDAO accountDAO) {
 		return runner -> {
-			System.out.println("Hello World");
+			demoTheBeforeAdvice(accountDAO);
 		};
+	}
+
+	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
+		accountDAO.addAccount();
 	}
 }
 
