@@ -22,6 +22,7 @@ public class SpringAopApplication {
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
 		accountDAO.addAccount();
+		accountDAO.addAccount();
 	}
 }
 
