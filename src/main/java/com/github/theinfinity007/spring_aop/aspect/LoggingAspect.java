@@ -35,8 +35,13 @@ public class LoggingAspect {
 
 
     @Before("execution(* add*(com.github.theinfinity007.spring_aop.Account, ..))")
-    public void beforeAdviceOnMatchWithAnyNumberOfParameter(){
+    public void beforeAdviceOnMatchWithAccountAndMoreParameter(){
         System.out.println("\n===============>> Executing @Before advice with match account and more parameters on method starting with add");
+    }
+
+    @Before("execution(* com.github.theinfinity007.spring_aop..add*(..))")
+    public void beforeAdviceOnMatchWithAnyNumberOfParameter(){
+        System.out.println("\n===============>> Executing @Before advice with match on any no of parameters on method starting with add");
     }
 
 }
