@@ -1,6 +1,7 @@
 package com.github.theinfinity007.spring_aop;
 
 import com.github.theinfinity007.spring_aop.dao.AccountDAO;
+import com.github.theinfinity007.spring_aop.dao.MembershipDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,15 +15,17 @@ public class SpringAopApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(AccountDAO accountDAO) {
+	CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 		return runner -> {
-			demoTheBeforeAdvice(accountDAO);
+			demoTheBeforeAdvice(accountDAO, membershipDAO);
 		};
 	}
 
-	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
+	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 		accountDAO.addAccount();
-		accountDAO.addAccount();
+
+		// call the membership business method
+		membershipDAO.addAccount();
 	}
 }
 
