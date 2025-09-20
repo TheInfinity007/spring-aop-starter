@@ -23,5 +23,9 @@ public class LoggingAspect {
         System.out.println("\n===============>> Executing @Before advice for method starting with add");
     }
 
+    @Before("execution(public * add*())")
+    public void beforeAdviceOnMatchAnyReturnType(){
+        System.out.println("\n===============>> Executing @Before advice for method with any return type and have name starting with add");
+    }
 
 }
