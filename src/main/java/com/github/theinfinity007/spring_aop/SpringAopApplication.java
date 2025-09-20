@@ -22,12 +22,14 @@ public class SpringAopApplication {
 	}
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
-		accountDAO.addAccount();
+//		accountDAO.addAccount();
 
 		// call the membership business method
 		//		membershipDAO.addAccount();
 
-		membershipDAO.addMembership();
+//		membershipDAO.addMembership();
+
+		accountDAO.addAccount(new Account());
 	}
 }
 

@@ -28,4 +28,9 @@ public class LoggingAspect {
         System.out.println("\n===============>> Executing @Before advice for method with any return type and have name starting with add");
     }
 
+    @Before("execution(* add*(com.github.theinfinity007.spring_aop.Account))")
+    public void beforeAdviceOnMatchInParameter(){
+        System.out.println("\n===============>> Executing @Before advice with match on account parameters on method starting with add");
+    }
+
 }
