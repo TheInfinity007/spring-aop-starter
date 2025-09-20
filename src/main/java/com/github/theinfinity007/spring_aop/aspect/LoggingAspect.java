@@ -17,4 +17,11 @@ public class LoggingAspect {
     public void beforeAddAccountAdviceOnASpecificClass(){
         System.out.println("\n===============>> Executing @Before advice for AccountDAO addAccount method");
     }
+
+    @Before("execution(public void add*())")
+    public void beforeAdviceOnAnyMethodStartingWithAdd(){
+        System.out.println("\n===============>> Executing @Before advice for method starting with add");
+    }
+
+
 }
