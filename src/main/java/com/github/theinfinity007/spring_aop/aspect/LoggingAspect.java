@@ -44,4 +44,12 @@ public class LoggingAspect {
         System.out.println("\n===============>> Executing @Before advice with match on any no of parameters on method starting with add");
     }
 
+
+    @Before("execution(* com.github.theinfinity007.spring_aop.dao.*.*(..))")
+    public void beforeAdviceOnMatchWithPackageName(){
+        System.out.println("\n===============>> Executing @Before advice with match on all methods inside the package dao");
+    }
+
+
+
 }
