@@ -10,6 +10,11 @@ public class LoggingAspect {
     // Run this code BEFORE - target object method: "public void addAcount()"
     @Before("execution(public void addAccount())")   // Pointcut expression
     public void beforeAddAccountAdvice(){
-        System.out.println("\n==============>> Executing @Before advice on addAccount");
+        System.out.println("\n==============>> Executing @Before advice on all addAccount");
+    }
+
+    @Before("execution(public void com.github.theinfinity007.spring_aop.dao.AccountDAO.addAccount())")
+    public void beforeAddAccountAdviceOnASpecificClass(){
+        System.out.println("\n===============>> Executing @Before advice for AccountDAO addAccount method");
     }
 }
