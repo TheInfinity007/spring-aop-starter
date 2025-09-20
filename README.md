@@ -28,4 +28,21 @@ Throw -> Exception types to match
 
 Note: The pattern is optional if it has `?`
 
+## Pointcut Expression Examples
+Match on method names
+* Match only addAccount() method in AccountDAO class
+`
+@Before("execution(public void com.github.theinfinity007.spring_aop.dao.AccoountDAO.addAccount())")
+`
 
+* Match any addAccount() method in any class
+`@Before("execution(public void addAccount())")`
+
+* Match methods starting with add in any class
+`@Before("execution(pubic void add*())")`
+
+* Use wildcard on return type
+`@Before("execution(public * add*())")`
+
+* Match without the modifier as it is optional
+`@Before("execution(* add*())")`

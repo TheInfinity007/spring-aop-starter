@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LoggingAspect {
-
     // Run this code BEFORE - target object method: "public void addAcount()"
     @Before("execution(public void addAccount())")   // Pointcut expression
     public void beforeAddAccountAdvice(){
