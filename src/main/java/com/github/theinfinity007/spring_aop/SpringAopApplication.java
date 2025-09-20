@@ -30,7 +30,10 @@ public class SpringAopApplication {
 //		membershipDAO.addMembership();
 
 		accountDAO.addAccount(new Account());
+		accountDAO.addAccount(new Account(), true);
 	}
+
+
 }
 
 
