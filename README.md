@@ -46,3 +46,23 @@ Match on method names
 
 * Match without the modifier as it is optional
 `@Before("execution(* add*())")`
+
+## Parameter Pattern Wildcards
+For param-pattern
+* () - matches a method with no arguments
+* (*) - matches a method with one argument of any type
+* (..) - matches a method with 0 or more arguments of any type
+
+Examples
+* Match addAccount method with no argument
+`@Before("execution(* addAccount())")`
+
+* Match addAccount methods that have Account param
+  `@Before("execution(* addAccount(com.github.theinfinity007.spring_aop.Account))")`
+
+* Match addAccount method with any number of arguemnts
+  `@Before("execution(* addAccount(..))")`
+
+## Match on package
+* Match any method in DAO Package: com.github.theinfinity007.spring_aop.dao with any return type and any number of arguments
+`@Before("executing(* com.github.theinfinity007.spring_aop.dao.*.*(..))")`
