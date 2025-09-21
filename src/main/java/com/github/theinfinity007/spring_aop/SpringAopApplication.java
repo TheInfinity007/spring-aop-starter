@@ -31,6 +31,9 @@ public class SpringAopApplication {
 
 //		accountDAO.addAccount(new Account());
 		accountDAO.addAccount(new Account(), true);
+		membershipDAO.goToSleep();
+		accountDAO.doWork();
+
 	}
 
 

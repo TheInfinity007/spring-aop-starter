@@ -55,14 +55,39 @@ For param-pattern
 
 Examples
 * Match addAccount method with no argument
-`@Before("execution(* addAccount())")`
-
+`@Before("execution(* addAccount())"
 * Match addAccount methods that have Account param
   `@Before("execution(* addAccount(com.github.theinfinity007.spring_aop.Account))")`
 
 * Match addAccount method with any number of arguemnts
   `@Before("execution(* addAccount(..))")`
 
-## Match on package
+### Match on package
 * Match any method in DAO Package: com.github.theinfinity007.spring_aop.dao with any return type and any number of arguments
 `@Before("executing(* com.github.theinfinity007.spring_aop.dao.*.*(..))")`
+
+
+## Pointcut Declaration
+
+Example
+```
+@Pointcut("execution(* com.github.theinfinity007.spring_aop.dao.*.*(..)))")
+private void forDaoPackage(){}
+
+
+@Before("forDaoPackage()")
+public void beforeAddAccountAdvice(){
+  ...
+}
+
+@Before("forDaoPackage()")
+public void performApiAnalyticsAdvice(){
+  ...
+}
+```
+
+### Benefits of Pointcut Declarations
+* Easily reuse pointcut expressions
+* Update pointcut in on location
+* Can also share and combine pointcut expressions
+

@@ -14,4 +14,9 @@ public class MembershipDAOImpl implements MembershipDAO{
         System.out.println(getClass().getSimpleName() + ": Doing my DB Work: Called addMembership method");
         return true;
     }
+
+    @Override
+    public void goToSleep() {
+        System.out.println(getClass().getSimpleName() + ": I'm going to sleep now");
+    }
 }

@@ -2,11 +2,15 @@ package com.github.theinfinity007.spring_aop.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class LoggingAspect {
+
+    /*
+
     // Run this code BEFORE - target object method: "public void addAcount()"
     @Before("execution(public void addAccount())")   // Pointcut expression
     public void beforeAddAccountAdvice(){
@@ -49,7 +53,15 @@ public class LoggingAspect {
     public void beforeAdviceOnMatchWithPackageName(){
         System.out.println("\n===============>> Executing @Before advice with match on all methods inside the package dao");
     }
+    */
 
 
+    @Pointcut("execution(* com.github.theinfinity007.spring_aop.dao.*.*(..))")
+    public void forDaoPackage(){}
+
+    @Before("forDaoPackage()")
+    public void beforeAdviceOnMatchWithPackageNameUsingPointcutDeclaration(){
+        System.out.println("\n===============>> Executing @Before advice with match on all methods inside the package dao using pointcut declaration");
+    }
 
 }
