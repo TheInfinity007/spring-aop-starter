@@ -102,3 +102,23 @@ Combining pointcut expressions using logic operators
 * Execution happens if only if it evaluates to true
 
 `@Before("expressionOne() && exressionTwo()")`
+
+
+## JoinPoints: 
+* Access the method Signature
+* Access the method arguments
+```
+@Before("...)
+public void beforeAddAccountAdvice(JoinPoint joinPoint){
+  MethodSignature methodSig = (MethodSignature) joinPoint.getSignature();
+  System.out.println("Method: " + methodSig);
+  
+  // arguments
+  Object[] args = joinPoint.getArgs();
+  // loop through args
+  for(Object arg: args){
+    System.out.println(arg);
+   }
+}
+```
+
