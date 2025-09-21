@@ -27,11 +27,11 @@ public class SpringAopApplication {
 		// call the membership business method
 		//		membershipDAO.addAccount();
 
-		membershipDAO.addMembership();
+//		membershipDAO.addMembership();
 
 //		accountDAO.addAccount(new Account());
-		accountDAO.addAccount(new Account(), true);
-		membershipDAO.goToSleep();
+//		accountDAO.addAccount(new Account(), true);
+//		membershipDAO.goToSleep();
 		accountDAO.doWork();
 
 	}

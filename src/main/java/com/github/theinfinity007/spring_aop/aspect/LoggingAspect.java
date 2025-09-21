@@ -64,4 +64,9 @@ public class LoggingAspect {
         System.out.println("\n===============>> Executing @Before advice with match on all methods inside the package dao using pointcut declaration");
     }
 
+    @Before("forDaoPackage()")
+    public void performApiAnalytics(){
+        System.out.println("\n==========>> Executing @Before advince: Performing API Analytics");
+    }
+
 }
