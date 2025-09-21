@@ -91,3 +91,14 @@ public void performApiAnalyticsAdvice(){
 * Update pointcut in on location
 * Can also share and combine pointcut expressions
 
+## Combining Pointcut Expressions
+Combining pointcut expressions using logic operators
+* AND (&&)
+* OR (||)
+* NOT (!)
+
+
+* Works like an if statement
+* Execution happens if only if it evaluates to true
+
+`@Before("expressionOne() && exressionTwo()")`

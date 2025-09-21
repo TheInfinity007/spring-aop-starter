@@ -26,13 +26,21 @@ public class SpringAopApplication {
 
 		// call the membership business method
 		//		membershipDAO.addAccount();
+		accountDAO.doWork();
+
+		// call the account dao getter/setter methods
+		accountDAO.setName("foobar");
+		accountDAO.setServiceCode("silver");
+		accountDAO.getName();
+		accountDAO.getServiceCode();
+
 
 //		membershipDAO.addMembership();
 
 //		accountDAO.addAccount(new Account());
 //		accountDAO.addAccount(new Account(), true);
 //		membershipDAO.goToSleep();
-		accountDAO.doWork();
+
 
 	}
 

@@ -59,6 +59,19 @@ public class LoggingAspect {
     @Pointcut("execution(* com.github.theinfinity007.spring_aop.dao.*.*(..))")
     public void forDaoPackage(){}
 
+    // declaration for getter methods
+    @Pointcut("execution(* com.github.theinfinity007.spring_aop.dao.*.get*(..))")
+    public void getter(){}
+
+    // declaration for setter methods
+    @Pointcut("execution(* com.github.theinfinity007.spring_aop.dao.*.set*(..))")
+    public void setter(){}
+
+    // declaration: include package.. exclude getter/setter
+    @Pointcut("forDaoPackage() && (!(getter() || setter()))")
+    public void forDaoPackageExcludingGetterAndSetter(){}
+
+    /*
     @Before("forDaoPackage()")
     public void beforeAdviceOnMatchWithPackageNameUsingPointcutDeclaration(){
         System.out.println("\n===============>> Executing @Before advice with match on all methods inside the package dao using pointcut declaration");
@@ -69,4 +82,15 @@ public class LoggingAspect {
         System.out.println("\n==========>> Executing @Before advince: Performing API Analytics");
     }
 
+     */
+
+    @Before("forDaoPackageExcludingGetterAndSetter()")
+    public void beforeAdviceOnMatchWithPackageNameExcludingGetterAndSetter(){
+        System.out.println("\n===============>> Executing @Before advice with match on all methods inside the package dao excluding getter and setter");
+    }
+
+    @Before("forDaoPackageExcludingGetterAndSetter()")
+    public void performApiAnalyticsExcludingGetterAndSetter(){
+        System.out.println("\n==========>> Executing @Before advince: Performing API Analytics");
+    }
 }
