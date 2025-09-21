@@ -26,7 +26,7 @@ public class SpringAopApplication {
 
 		// call the membership business method
 		//		membershipDAO.addAccount();
-		accountDAO.doWork();
+//		accountDAO.doWork();
 
 		// call the account dao getter/setter methods
 //		accountDAO.setName("foobar");
@@ -37,8 +37,11 @@ public class SpringAopApplication {
 
 //		membershipDAO.addMembership();
 
+		Account myAccount = new Account();
+		myAccount.setLevel("Platinum");
+		myAccount.setName("John");
 //		accountDAO.addAccount(new Account());
-//		accountDAO.addAccount(new Account(), true);
+		accountDAO.addAccount(myAccount, true);
 //		membershipDAO.goToSleep();
 
 
