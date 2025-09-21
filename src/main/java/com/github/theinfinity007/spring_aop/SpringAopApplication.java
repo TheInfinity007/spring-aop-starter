@@ -29,10 +29,10 @@ public class SpringAopApplication {
 		accountDAO.doWork();
 
 		// call the account dao getter/setter methods
-		accountDAO.setName("foobar");
-		accountDAO.setServiceCode("silver");
-		accountDAO.getName();
-		accountDAO.getServiceCode();
+//		accountDAO.setName("foobar");
+//		accountDAO.setServiceCode("silver");
+//		accountDAO.getName();
+//		accountDAO.getServiceCode();
 
 
 //		membershipDAO.addMembership();

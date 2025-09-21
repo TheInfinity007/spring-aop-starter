@@ -2,11 +2,12 @@ package com.github.theinfinity007.spring_aop.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(2)
 public class LoggingAspect {
 
     /*
@@ -56,20 +57,7 @@ public class LoggingAspect {
     */
 
 
-    @Pointcut("execution(* com.github.theinfinity007.spring_aop.dao.*.*(..))")
-    public void forDaoPackage(){}
 
-    // declaration for getter methods
-    @Pointcut("execution(* com.github.theinfinity007.spring_aop.dao.*.get*(..))")
-    public void getter(){}
-
-    // declaration for setter methods
-    @Pointcut("execution(* com.github.theinfinity007.spring_aop.dao.*.set*(..))")
-    public void setter(){}
-
-    // declaration: include package.. exclude getter/setter
-    @Pointcut("forDaoPackage() && (!(getter() || setter()))")
-    public void forDaoPackageExcludingGetterAndSetter(){}
 
     /*
     @Before("forDaoPackage()")
@@ -84,13 +72,12 @@ public class LoggingAspect {
 
      */
 
-    @Before("forDaoPackageExcludingGetterAndSetter()")
+    @Before("com.github.theinfinity007.spring_aop.aspect.AopExpressions.forDaoPackageExcludingGetterAndSetter()")
     public void beforeAdviceOnMatchWithPackageNameExcludingGetterAndSetter(){
         System.out.println("\n===============>> Executing @Before advice with match on all methods inside the package dao excluding getter and setter");
     }
 
-    @Before("forDaoPackageExcludingGetterAndSetter()")
-    public void performApiAnalyticsExcludingGetterAndSetter(){
-        System.out.println("\n==========>> Executing @Before advince: Performing API Analytics");
-    }
+
+
+
 }
