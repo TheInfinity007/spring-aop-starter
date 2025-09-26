@@ -2,10 +2,7 @@ package com.github.theinfinity007.spring_aop.aspect;
 
 import com.github.theinfinity007.spring_aop.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.aspectj.lang.reflect.SignaturePattern;
 import org.springframework.core.annotation.Order;
@@ -135,4 +132,5 @@ public class LoggingAspect {
         System.out.println("\n==========> The exception is: " + ex);
     }
 
+    @After()
 }

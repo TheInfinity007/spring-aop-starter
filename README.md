@@ -149,6 +149,7 @@ public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> 
 
 # AfterThrowing Advice
 This Advice will run after the method call (if exception is thrown)
+* Supports accessing the exception
 
 ```
 @AfterThrowing(
@@ -161,3 +162,20 @@ public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable ex){
   System.out.println("Exception is: " + ex);  
 }
 ```
+
+# After Advice
+This Advice will run after the method call (finally)
+
+```
+@After("execution(* com.github.theinfinity007.spring_aop.dao.AccoountDAO.findAccounts(..))")
+public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint, Throwable ex){
+  System.out.println("Executing @After (finally) advice");
+  
+}
+```
+
+Tips:
+* @After advice does not have access to the Exception, if exception is needed, use the @AfterThrowing advice
+* @After should be able to run in case of success or error
+* Code should not depend on happy path or an exception
+* Logging / auditing is the easiest case here
