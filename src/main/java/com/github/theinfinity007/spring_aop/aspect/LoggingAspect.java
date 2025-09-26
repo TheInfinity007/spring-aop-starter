@@ -111,10 +111,16 @@ public class LoggingAspect {
         String methodName = joinPoint.getSignature().toShortString();
         System.out.println("\n==========> Executing @AfterReturning on method = " + methodName);
 
-        System.out.println("\n==========> Result is = " + result);
+        System.out.println("\n==========> Original Result is = " + result);
+
+        // Modify the response or post-process the data.
+        convertAccountNameToUpperCase(result);
+        System.out.println("\n==========> Modified Result is = " + result);
     }
 
-
+    private void convertAccountNameToUpperCase(List<Account> result) {
+        result.forEach((item) -> item.setName(item.getName().toUpperCase()));
+    }
 
 
 }
