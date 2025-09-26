@@ -2,12 +2,16 @@ package com.github.theinfinity007.spring_aop.dao;
 
 import com.github.theinfinity007.spring_aop.Account;
 
+import java.util.List;
+
 public interface AccountDAO {
     void addAccount();
 
     void addAccount(Account account);
 
     void addAccount(Account account, boolean vipFlag);
+
+     List<Account> findAccounts();
 
     void doWork();
 

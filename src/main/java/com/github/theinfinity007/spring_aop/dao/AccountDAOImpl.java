@@ -3,6 +3,9 @@ package com.github.theinfinity007.spring_aop.dao;
 import com.github.theinfinity007.spring_aop.Account;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class AccountDAOImpl implements AccountDAO{
 
@@ -22,6 +25,13 @@ public class AccountDAOImpl implements AccountDAO{
     @Override
     public void addAccount(Account account, boolean vipFlag) {
         System.out.println(getClass().getSimpleName() + ": Doing my DB Work: Adding an Account with multiple params");
+    }
+
+    @Override
+    public List<Account> findAccounts() {
+        List<Account> accounts = new ArrayList<>();
+        accounts.add(new Account());
+        return accounts;
     }
 
     @Override
