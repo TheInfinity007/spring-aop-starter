@@ -6,7 +6,7 @@ public class Account {
 
     public Account(){}
 
-    public Account(String level, String name) {
+    public Account(String name, String level) {
         this.level = level;
         this.name = name;
     }

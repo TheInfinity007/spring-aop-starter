@@ -3,6 +3,7 @@ package com.github.theinfinity007.spring_aop.aspect;
 import com.github.theinfinity007.spring_aop.Account;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -122,5 +123,16 @@ public class LoggingAspect {
         result.forEach((item) -> item.setName(item.getName().toUpperCase()));
     }
 
+    // AfterThrowing Advice
+    @AfterThrowing(
+            pointcut = "execution(* com.github.theinfinity007.spring_aop.dao.AccountDAO.findAccounts(..))",
+            throwing = "ex"
+    )
+    public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable ex){
+        String methodName = joinPoint.getSignature().toShortString();
+        System.out.println("\n==========> Executing @AfterThrowing on method = " + methodName);
+
+        System.out.println("\n==========> The exception is: " + ex);
+    }
 
 }

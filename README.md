@@ -147,3 +147,17 @@ public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> 
 }
 ```
 
+# AfterThrowing Advice
+This Advice will run after the method call (if exception is thrown)
+
+```
+@AfterThrowing(
+  pointcut = "execution(* com.github.theinfinity007.spring_aop.dao.AccoountDAO.findAccounts(..))",
+  throwing = "ex"  
+)
+public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable ex){
+  System.out.println("Executing @AfterThrowing advice");
+  
+  System.out.println("Exception is: " + ex);  
+}
+```
