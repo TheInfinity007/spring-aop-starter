@@ -122,3 +122,28 @@ public void beforeAddAccountAdvice(JoinPoint joinPoint){
 }
 ```
 
+# AfterReturning Advice
+
+This Advice will run after the method call (success execution)
+
+```
+@AfterReturning("execution(public void com.github.theinfinity007.spring_aop.dao.AccoountDAO.findAccounts())")
+public void afterReturningFindAccountsAdvice(){
+System.out.println("Executing @AfterReturning advice");
+}
+```
+
+Supports accessing the return value
+```
+@AfterReturning(
+  pointcut = "execution(public void com.github.theinfinity007.spring_aop.dao.AccoountDAO.findAccounts())"
+  returning = "result"
+)
+public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> result){
+  System.out.println("Executing @AfterReturning advice");
+  
+  System.out.println("Printing return value", result);
+  
+}
+```
+

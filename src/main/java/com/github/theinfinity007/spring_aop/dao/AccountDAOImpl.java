@@ -30,7 +30,14 @@ public class AccountDAOImpl implements AccountDAO{
     @Override
     public List<Account> findAccounts() {
         List<Account> accounts = new ArrayList<>();
-        accounts.add(new Account());
+        Account account1 = new Account("John", "Silver");
+        Account account2 = new Account("Madhu", "Platinum");
+        Account account3 = new Account("Luca", "Gold");
+
+        accounts.add(account1);
+        accounts.add(account2);
+        accounts.add(account3);
+
         return accounts;
     }
 

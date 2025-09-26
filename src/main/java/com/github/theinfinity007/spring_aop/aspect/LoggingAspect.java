@@ -2,11 +2,15 @@ package com.github.theinfinity007.spring_aop.aspect;
 
 import com.github.theinfinity007.spring_aop.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.aspectj.lang.reflect.SignaturePattern;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Aspect
 @Component
@@ -95,6 +99,19 @@ public class LoggingAspect {
                 System.out.println(arg);
             }
         }
+    }
+
+    // @AfterReturning advice
+    @AfterReturning(
+            pointcut = "execution(* com.github.theinfinity007.spring_aop.dao.AccountDAO.findAccounts(..))",
+            returning = "result"
+    )
+    public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> result){
+
+        String methodName = joinPoint.getSignature().toShortString();
+        System.out.println("\n==========> Executing @AfterReturning on method = " + methodName);
+
+        System.out.println("\n==========> Result is = " + result);
     }
 
 
