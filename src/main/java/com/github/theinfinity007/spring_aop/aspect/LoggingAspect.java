@@ -132,5 +132,10 @@ public class LoggingAspect {
         System.out.println("\n==========> The exception is: " + ex);
     }
 
-    @After()
+    @After("execution (* com.github.theinfinity007.spring_aop.dao.AccountDAO.findAccounts(..))")
+    public void afterFinallyFindAccountAdvice(JoinPoint joinPoint){
+        String methodName = joinPoint.getSignature().toShortString();
+        System.out.println("\n==========> Executing @After (finally) on method = " + methodName);
+    }
+
 }

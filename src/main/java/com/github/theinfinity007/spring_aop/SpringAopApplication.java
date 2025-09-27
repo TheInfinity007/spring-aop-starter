@@ -21,8 +21,29 @@ public class SpringAopApplication {
 		return runner -> {
 //			demoTheBeforeAdvice(accountDAO, membershipDAO);
 //			demoTheAfterReturningAdvice(accountDAO);
-			demoTheAfterThrowingAdvice(accountDAO);
+//			demoTheAfterThrowingAdvice(accountDAO);
+			demoTheAfterAdvice(accountDAO);
 		};
+	}
+
+	private void demoTheAfterAdvice(AccountDAO accountDAO) {
+
+		List<Account> accounts = null;
+
+		try {
+			// add a boolean flag to simulate exceptions
+
+//			boolean tripWire = true;
+			boolean tripWire = false;
+			accounts = accountDAO.findAccounts(tripWire);
+		} catch (Exception ex){
+			System.out.println("\n\n Main Program: ... caught exception: " + ex);
+		}
+
+		System.out.println("\n\nMain Program: demoTheAfterAdvice");
+		System.out.println("---------");
+		System.out.println(accounts);
+
 	}
 
 	private void demoTheAfterThrowingAdvice(AccountDAO accountDAO) {
