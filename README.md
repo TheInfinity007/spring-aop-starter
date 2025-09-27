@@ -179,3 +179,34 @@ Tips:
 * @After should be able to run in case of success or error
 * Code should not depend on happy path or an exception
 * Logging / auditing is the easiest case here
+
+
+# @Around Advice
+* It is like a combination of @Before and @After advice, but gives more fine-grained control
+
+## Proceeding JoinPoint
+* When using @Around advice
+* You will get a reference to a "proceeding join point"
+* This is a handle to the target method
+* Your code can use the proceeding join point to execute target method
+
+```
+@Around("executing(* com.github.theinfinity007.spring_aop.service.*.getForturne(..))")
+public Object afterGetFortune(
+  ProceedingJoinPoint proceedingJoinPoint
+) throws Throwable {
+  
+  // set the start time
+  login begin = System.currentTimeMillis();
+  
+  // now, execute the method
+  Object result = proceedingJoinPoint.proceed();
+  
+  // get the end timestamp
+  long end = System.currentTimeMillis();
+  
+  // compute the duration
+  long duration = end-begin;
+  System.out.println("\n ======> Duration: " + duration + " milliseconds");
+}
+```

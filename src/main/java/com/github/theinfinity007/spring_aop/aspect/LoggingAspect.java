@@ -2,6 +2,7 @@ package com.github.theinfinity007.spring_aop.aspect;
 
 import com.github.theinfinity007.spring_aop.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.aspectj.lang.reflect.SignaturePattern;
@@ -136,6 +137,27 @@ public class LoggingAspect {
     public void afterFinallyFindAccountAdvice(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
         System.out.println("\n==========> Executing @After (finally) on method = " + methodName);
+    }
+
+    @Around("execution (* com.github.theinfinity007.spring_aop.service.*.getFortune(..))")
+    public Object aroundAdviceGetFround(
+            ProceedingJoinPoint proceedingJoinPoint
+    ) throws Throwable {
+        // Calculate the execution time of a method
+
+        String methodName = proceedingJoinPoint.getSignature().toShortString();
+        System.out.println("\n==========> Executing @Around advice on method = " + methodName);
+
+        long begin = System.currentTimeMillis();
+
+        Object result = proceedingJoinPoint.proceed();
+
+        long end = System.currentTimeMillis();
+
+        long duration = end - begin;
+        System.out.println("\n==========> Duration: " + duration/1000.0 + " seconds");
+
+        return result;
     }
 
 }
